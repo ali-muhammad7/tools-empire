@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+/*
+ * Tools Empire design system — Tailwind CSS v4 (CSS-first).
+ *
+ * Theming lives here, not in a tailwind.config.js (v4 has none).
+ * - `@theme inline` maps semantic tokens to CSS variables so classes like
+ *   `bg-background` / `text-foreground` / `bg-brand` work everywhere.
+ * - Dark mode is class-based (`.dark` on <html>, driven by next-themes),
+ *   so we declare the class variant explicitly — v4's default dark variant
+ *   follows prefers-color-scheme, which would fight the toggle.
+ */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* Light theme */
+  --background: #ffffff;
+  --foreground: #0f172a; /* slate-900 */
+  --muted: #f1f5f9; /* slate-100 */
+  --muted-foreground: #64748b; /* slate-500 */
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --border: #e2e8f0; /* slate-200 */
+  --brand: #4f46e5; /* indigo-600 */
+  --brand-hover: #4338ca; /* indigo-700 */
+  --brand-foreground: #ffffff;
+  --brand-text: #4338ca; /* indigo-700 — text on light bg, ~7:1 */
+  --brand-soft: #eef2ff; /* indigo-50 */
+  --ring: #4f46e5;
+}
+
+.dark {
+  /* Dark theme */
+  --background: #0b1120; /* slate-950-ish, slightly blue */
+  --foreground: #f1f5f9; /* slate-100 */
+  --muted: #1e293b; /* slate-800 */
+  --muted-foreground: #94a3b8; /* slate-400 */
+  --card: #111c33;
+  --card-foreground: #f1f5f9;
+  --border: #1e293b; /* slate-800 */
+  --brand: #6366f1; /* indigo-500 — brighter on dark */
+  --brand-hover: #818cf8; /* indigo-400 */
+  --brand-foreground: #ffffff;
+  --brand-text: #a5b4fc; /* indigo-300 — text on dark bg, ~8:1 */
+  --brand-soft: #1e1b4b; /* indigo-950 */
+  --ring: #818cf8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-brand-text: var(--brand-text);
+  --color-brand-soft: var(--brand-soft);
+  --color-ring: var(--ring);
+
+  /* System / Inter stack — no paid fonts, no webfont download required. */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    /* Guard against any stray wide element causing horizontal scroll on
+       small screens (clip, unlike hidden, does not break sticky header). */
+    overflow-x: clip;
+    /* Smooth theme transitions without a flash on toggle. */
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  /* One consistent, visible keyboard-focus ring everywhere, including
+     links and buttons that do not set their own focus styles. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  /* Larger touch target for sliders, themed to the brand color. */
+  input[type="range"] {
+    height: 1.75rem;
+    cursor: pointer;
+    accent-color: var(--brand);
+  }
+
+  input[type="checkbox"] {
+    accent-color: var(--brand);
+  }
+
+  * {
+    border-color: var(--border);
+  }
+}
