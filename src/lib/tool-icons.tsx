@@ -14,8 +14,11 @@ import {
   Binary,
   Braces,
   CaseUpper,
+  FileKey,
+  FileStack,
   FileText,
   Hash,
+  ImageDown,
   KeyRound,
   Link2,
   Palette,
@@ -49,6 +52,12 @@ export function ToolIcon({ icon, className }: ToolIconProps) {
       return <QrCode className={className} aria-hidden="true" />;
     case "Palette":
       return <Palette className={className} aria-hidden="true" />;
+    case "FileStack":
+      return <FileStack className={className} aria-hidden="true" />;
+    case "ImageDown":
+      return <ImageDown className={className} aria-hidden="true" />;
+    case "FileKey":
+      return <FileKey className={className} aria-hidden="true" />;
     case "FileText":
     default:
       return <FileText className={className} aria-hidden="true" />;

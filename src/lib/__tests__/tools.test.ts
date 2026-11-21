@@ -14,8 +14,8 @@ import {
  * all generated from this registry, so a broken entry here breaks SEO too.
  */
 describe("tool registry", () => {
-  it("contains exactly 10 tools", () => {
-    expect(TOOLS).toHaveLength(10);
+  it("contains exactly 13 tools", () => {
+    expect(TOOLS).toHaveLength(13);
   });
 
   it("has unique slugs", () => {
@@ -48,6 +48,6 @@ describe("tool registry", () => {
       "json-formatter",
     );
     expect(searchTools("password")).toHaveLength(1);
-    expect(searchTools("")).toHaveLength(10);
+    expect(searchTools("")).toHaveLength(13);
   });
 });

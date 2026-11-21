@@ -13,7 +13,7 @@ import { SITE_URL } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Categories",
   description:
-    "Browse all Tools Empire categories — Text Tools, Encoding & Data, Generators and Design Tools. Every tool is free, private and runs entirely in your browser.",
+    "Browse all Tools Empire categories — text, data, generators, design, PDF and image tools. Every tool is free, private and runs entirely in your browser.",
   alternates: { canonical: `${SITE_URL}/categories` },
   openGraph: { url: `${SITE_URL}/categories`, type: "website" },
 };
@@ -28,7 +28,7 @@ export default function CategoriesPage() {
           Tool categories
         </h1>
         <p className="mt-2 max-w-2xl text-lg leading-7 text-muted-foreground">
-          Four categories, ten free tools — every one runs entirely in your
+          Six categories of free tools — every one runs entirely in your
           browser, with no sign-up and no data leaving your device.
         </p>
       </div>

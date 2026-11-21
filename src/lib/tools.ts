@@ -16,13 +16,17 @@ export type ToolCategory =
   | "Text Tools"
   | "Encoding & Data"
   | "Generators"
-  | "Design Tools";
+  | "Design Tools"
+  | "PDF Tools"
+  | "Image Tools";
 
 export const CATEGORIES: ToolCategory[] = [
   "Text Tools",
   "Encoding & Data",
   "Generators",
   "Design Tools",
+  "PDF Tools",
+  "Image Tools",
 ];
 
 /** One-line description per category, shown on category pages. */
@@ -30,11 +34,15 @@ export const CATEGORY_DESCRIPTIONS: Record<ToolCategory, string> = {
   "Text Tools":
     "Count, convert and shape your words — word and character counts, case conversion and more, all as you type.",
   "Encoding & Data":
-    "Encode, decode, format and validate data — JSON, Base64 and URLs, with clear errors when input is invalid.",
+    "Encode, decode, format and validate data — JSON, Base64, URLs and JWTs, with clear errors when input is invalid.",
   Generators:
     "Create secure passwords, unique UUIDs and shareable QR codes in one click — generated locally, never uploaded.",
   "Design Tools":
     "Convert and preview colours between HEX, RGB and HSL, and find the exact shade you need.",
+  "PDF Tools":
+    "Merge, split, extract, rotate and reorder PDF pages — your files are processed on your device and never uploaded.",
+  "Image Tools":
+    "Compress, resize and convert images between JPG, PNG and WebP in batches — privately, right in your browser.",
 };
 
 export interface Tool {
@@ -140,6 +148,59 @@ export const TOOLS: Tool[] = [
     category: "Design Tools",
     keywords: ["color", "colour", "hex", "rgb", "hsl", "palette", "picker"],
     icon: "Palette",
+  },
+  {
+    slug: "pdf-organizer",
+    name: "PDF Organizer",
+    description:
+      "Merge, split, extract, rotate and reorder PDF pages — free, unlimited, and your files never leave your device.",
+    category: "PDF Tools",
+    keywords: [
+      "pdf",
+      "merge pdf",
+      "split pdf",
+      "extract pages",
+      "rotate pdf",
+      "reorder pages",
+      "combine pdf",
+      "pdf editor",
+    ],
+    icon: "FileStack",
+  },
+  {
+    slug: "image-compressor",
+    name: "Image Compressor & Converter",
+    description:
+      "Compress and convert JPG, PNG and WebP images in batches — hit an exact target size for forms and uploads, privately in your browser.",
+    category: "Image Tools",
+    keywords: [
+      "image",
+      "compress image",
+      "resize image",
+      "jpg to png",
+      "png to jpg",
+      "webp converter",
+      "reduce image size",
+      "photo compressor",
+    ],
+    icon: "ImageDown",
+  },
+  {
+    slug: "jwt-decoder",
+    name: "JWT Decoder",
+    description:
+      "Decode a JSON Web Token's header and payload, inspect its claims and expiry, and optionally verify an HS256 signature — without sending the token anywhere.",
+    category: "Encoding & Data",
+    keywords: [
+      "jwt",
+      "json web token",
+      "decode token",
+      "jwt debugger",
+      "verify jwt",
+      "hs256",
+      "bearer token",
+    ],
+    icon: "FileKey",
   },
 ];
 

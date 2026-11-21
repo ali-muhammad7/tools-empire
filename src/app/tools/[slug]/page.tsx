@@ -9,8 +9,11 @@ import { Base64EncoderDecoder } from "@/components/tools/Base64EncoderDecoder";
 import { CaseConverter } from "@/components/tools/CaseConverter";
 import { CharacterCounter } from "@/components/tools/CharacterCounter";
 import { ColorConverter } from "@/components/tools/ColorConverter";
+import { ImageCompressorLazy } from "@/components/tools/ImageCompressorLazy";
 import { JsonFormatter } from "@/components/tools/JsonFormatter";
+import { JwtDecoder } from "@/components/tools/JwtDecoder";
 import { PasswordGenerator } from "@/components/tools/PasswordGenerator";
+import { PdfOrganizerLazy } from "@/components/tools/PdfOrganizerLazy";
 import { QrCodeGeneratorLazy } from "@/components/tools/QrCodeGeneratorLazy";
 import { UrlEncoderDecoder } from "@/components/tools/UrlEncoderDecoder";
 import { UuidGenerator } from "@/components/tools/UuidGenerator";
@@ -31,7 +34,7 @@ export function generateStaticParams() {
 // Under Partial Prerendering that streams as HTTP 200 with the 404 page
 // content plus `<meta name="robots" content="noindex">` — the documented
 // Next.js behaviour for a mid-stream notFound() — so search engines will
-// not index unknown slugs. Only the 10 registry slugs are ever linked.
+// not index unknown slugs. Only registry slugs are ever linked.
 
 export async function generateMetadata({
   params,
@@ -82,6 +85,12 @@ function ToolContent({ slug }: { slug: string }) {
       return <QrCodeGeneratorLazy />;
     case "color-converter":
       return <ColorConverter />;
+    case "pdf-organizer":
+      return <PdfOrganizerLazy />;
+    case "image-compressor":
+      return <ImageCompressorLazy />;
+    case "jwt-decoder":
+      return <JwtDecoder />;
     default:
       return null;
   }
