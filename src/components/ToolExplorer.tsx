@@ -121,7 +121,7 @@ export function ToolExplorer() {
                   </div>
                   <Link
                     href={`/categories/${categorySlug(category)}`}
-                    className="shrink-0 text-sm font-medium text-brand-text transition-colors hover:underline"
+                    className="shrink-0 py-1.5 text-sm font-medium text-brand-text transition-colors hover:underline"
                   >
                     View all →
                   </Link>

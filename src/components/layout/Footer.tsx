@@ -37,7 +37,7 @@ export function Footer() {
                 <li key={category}>
                   <Link
                     href={`/categories/${categorySlug(category)}`}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    className="inline-block py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {category}
                   </Link>
@@ -53,7 +53,7 @@ export function Footer() {
                 <li key={tool.slug}>
                   <Link
                     href={`/tools/${tool.slug}`}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    className="inline-block py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {tool.name}
                   </Link>

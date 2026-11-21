@@ -18,7 +18,7 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
         <li>
           <Link
             href="/"
-            className="transition-colors hover:text-foreground"
+            className="inline-block py-1 transition-colors hover:text-foreground"
           >
             Home
           </Link>
@@ -35,7 +35,7 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
             {item.href ? (
               <Link
                 href={item.href}
-                className="transition-colors hover:text-foreground"
+                className="inline-block py-1 transition-colors hover:text-foreground"
               >
                 {item.label}
               </Link>

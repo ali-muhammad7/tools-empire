@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Lock, Sparkles, Zap } from "lucide-react";
 import { ToolExplorer } from "@/components/ToolExplorer";
-import { SITE_URL } from "@/lib/seo";
+import { SITE_URL, websiteJsonLd } from "@/lib/seo";
 import { TOOLS } from "@/lib/tools";
 
 /** Homepage canonical (title/description come from the root layout). */
@@ -31,6 +31,21 @@ const HIGHLIGHTS = [
 export default function Home() {
   return (
     <div className="pb-20">
+      {/* Structured data: honest, no ratings or reviews. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            websiteJsonLd(
+              TOOLS.map((t) => ({
+                slug: t.slug,
+                name: t.name,
+                description: t.description,
+              })),
+            ),
+          ),
+        }}
+      />
       {/* Hero */}
       <section className="mx-auto max-w-7xl px-4 pb-4 pt-16 text-center sm:px-6 sm:pt-24 lg:px-8">
         <p className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs font-medium text-muted-foreground shadow-sm">
