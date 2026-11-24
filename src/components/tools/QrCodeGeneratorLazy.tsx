@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { ToolSkeleton } from "./ToolSkeleton";
 
 /**
  * Lazy wrapper for the QR tool. The `qrcode` library is the only
@@ -12,8 +13,9 @@ import dynamic from "next/dynamic";
  * did not split it: the chunk was still in a `<script src>` on every
  * tool page. Verified by inspecting the built HTML — see STAGE6-REPORT.)
  */
-const QrCodeGenerator = dynamic(() =>
-  import("./QrCodeGenerator").then((mod) => mod.QrCodeGenerator),
+const QrCodeGenerator = dynamic(
+  () => import("./QrCodeGenerator").then((mod) => mod.QrCodeGenerator),
+  { loading: () => <ToolSkeleton /> },
 );
 
 export function QrCodeGeneratorLazy() {

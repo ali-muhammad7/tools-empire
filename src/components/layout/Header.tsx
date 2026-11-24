@@ -25,8 +25,13 @@ export function Header() {
           <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-brand-foreground">
             <Wrench className="h-5 w-5" aria-hidden="true" />
           </span>
-          <span className="text-lg font-bold tracking-tight">
-            Tools<span className="text-brand-text"> Empire</span>
+          <span className="flex flex-col leading-none">
+            <span className="text-lg font-bold tracking-tight">
+              Tools<span className="text-brand-text"> Empire</span>
+            </span>
+            <span className="mt-1 text-[9px] font-medium uppercase tracking-[0.22em] text-muted-foreground sm:text-[10px]">
+              Founder · Ali Muhammad
+            </span>
           </span>
         </Link>
 
@@ -65,7 +70,7 @@ export function Header() {
 
       {menuOpen && (
         <nav
-          className="border-t border-border px-4 pb-4 pt-2 md:hidden"
+          className="animate-fade-in border-t border-border px-4 pb-4 pt-2 md:hidden"
           aria-label="Mobile navigation"
         >
           {NAV_LINKS.map((link) => (

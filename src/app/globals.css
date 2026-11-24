@@ -82,8 +82,8 @@
     overflow-x: clip;
     /* Smooth theme transitions without a flash on toggle. */
     transition:
-      background-color 0.2s ease,
-      color 0.2s ease;
+      background-color 0.25s ease,
+      color 0.25s ease;
   }
 
   /* One consistent, visible keyboard-focus ring everywhere, including
@@ -106,5 +106,127 @@
 
   * {
     border-color: var(--border);
+  }
+}
+
+/*
+ * Motion system (Part 1 polish) — CSS only, no animation library.
+ * - Entrance: `animate-fade-up` keyframes with per-element delay via the
+ *   `--enter-delay` custom property.
+ * - Scroll reveals: `.reveal` starts hidden ONLY after JS arms it
+ *   (`.reveal-armed`), so no-JS and pre-hydration content is never hidden.
+ *   `.is-visible` (added by IntersectionObserver) transitions it in.
+ * - Everything is disabled under prefers-reduced-motion.
+ */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--enter-delay, 0s);
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease both;
+    animation-delay: var(--enter-delay, 0s);
+  }
+
+  .reveal-armed {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0s);
+  }
+
+  .reveal-armed.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Skeleton block for lazy-loaded tool chunks. */
+  .skeleton {
+    background: linear-gradient(
+      100deg,
+      var(--muted) 40%,
+      var(--border) 50%,
+      var(--muted) 60%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.6s linear infinite;
+  }
+
+  /* Subtle hero backdrop: soft brand glow + faint grid, theme-aware. */
+  .hero-backdrop {
+    background-image:
+      radial-gradient(
+        ellipse 60% 50% at 50% 0%,
+        var(--brand-soft) 0%,
+        transparent 70%
+      ),
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:
+      100% 100%,
+      56px 56px,
+      56px 56px;
+    mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 55%,
+      transparent 100%
+    );
+    opacity: 0.5;
+  }
+
+  .dark .hero-backdrop {
+    opacity: 0.35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal-armed {
+    opacity: 1;
+    transform: none;
   }
 }

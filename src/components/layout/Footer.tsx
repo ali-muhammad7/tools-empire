@@ -13,8 +13,13 @@ export function Footer() {
               <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-brand-foreground">
                 <Wrench className="h-5 w-5" aria-hidden="true" />
               </span>
-              <span className="text-lg font-bold tracking-tight">
-                Tools<span className="text-brand-text"> Empire</span>
+              <span className="flex flex-col leading-none">
+                <span className="text-lg font-bold tracking-tight">
+                  Tools<span className="text-brand-text"> Empire</span>
+                </span>
+                <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.22em] text-muted-foreground">
+                  Founder · Ali Muhammad
+                </span>
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-6 text-muted-foreground">

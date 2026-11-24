@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { ToolCard } from "@/components/layout/ToolCard";
@@ -130,7 +131,7 @@ export default async function ToolPage({
         ]}
       />
 
-      <div className="mt-8 flex items-start gap-4">
+      <div className="animate-fade-up mt-8 flex items-start gap-4">
         <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-soft text-brand-text">
           <ToolIcon icon={tool.icon} className="h-7 w-7" />
         </span>
@@ -147,7 +148,10 @@ export default async function ToolPage({
         </div>
       </div>
 
-      <div className="mt-10">
+      <div
+        className="animate-fade-up mt-10"
+        style={{ "--enter-delay": "0.1s" } as CSSProperties}
+      >
         <ToolContent slug={tool.slug} />
       </div>
 

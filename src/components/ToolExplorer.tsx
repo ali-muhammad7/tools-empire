@@ -3,6 +3,7 @@
 import { SearchX } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Reveal } from "./Reveal";
 import { SearchBar } from "./SearchBar";
 import { ToolCard } from "./layout/ToolCard";
 import {
@@ -68,7 +69,10 @@ export function ToolExplorer() {
           </p>
 
           {results.length > 0 ? (
-            <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div
+              key={query}
+              className="animate-fade-in mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+            >
               {results.map((tool) => (
                 <ToolCard key={tool.slug} tool={tool} />
               ))}
@@ -127,8 +131,10 @@ export function ToolExplorer() {
                   </Link>
                 </div>
                 <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                  {tools.map((tool) => (
-                    <ToolCard key={tool.slug} tool={tool} />
+                  {tools.map((tool, index) => (
+                    <Reveal key={tool.slug} delay={(index % 3) * 0.08}>
+                      <ToolCard tool={tool} />
+                    </Reveal>
                   ))}
                 </div>
               </section>

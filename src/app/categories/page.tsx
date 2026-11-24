@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import {
   CATEGORIES,
@@ -34,13 +35,13 @@ export default function CategoriesPage() {
       </div>
 
       <div className="mt-10 grid gap-5 sm:grid-cols-2">
-        {CATEGORIES.map((category) => {
+        {CATEGORIES.map((category, index) => {
           const tools = getToolsByCategory(category);
           return (
+            <Reveal key={category} delay={(index % 2) * 0.08}>
             <Link
-              key={category}
               href={`/categories/${categorySlug(category)}`}
-              className="group rounded-2xl border border-border bg-card p-6 text-card-foreground shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-brand/50 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 text-card-foreground shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/50 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring active:scale-[0.98]"
             >
               <h2 className="text-xl font-semibold tracking-tight">
                 {category}
@@ -60,6 +61,7 @@ export default function CategoriesPage() {
                 />
               </span>
             </Link>
+            </Reveal>
           );
         })}
       </div>

@@ -22,9 +22,9 @@ export function SearchBar({
   inputRef,
 }: SearchBarProps) {
   return (
-    <div className="relative mx-auto w-full max-w-2xl">
+    <div className="group relative mx-auto w-full max-w-2xl">
       <Search
-        className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground"
+        className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground transition-colors group-focus-within:text-brand-text"
         aria-hidden="true"
       />
       <input
@@ -35,7 +35,7 @@ export function SearchBar({
         value={value}
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
-        className="h-14 w-full rounded-2xl border border-border bg-card pl-12 pr-12 text-base text-card-foreground shadow-lg placeholder:text-muted-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+        className="h-14 w-full rounded-2xl border border-border bg-card pl-12 pr-12 text-base text-card-foreground shadow-lg transition-all duration-300 placeholder:text-muted-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring group-focus-within:shadow-xl group-focus-within:ring-4 group-focus-within:ring-brand/10"
       />
       {value ? (
         <button

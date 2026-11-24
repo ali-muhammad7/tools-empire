@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { ToolSkeleton } from "./ToolSkeleton";
 
 /**
  * Lazy wrapper for the PDF Organizer. pdf-lib and PDF.js are heavy
@@ -8,8 +9,9 @@ import dynamic from "next/dynamic";
  * Client Component keeps them off the homepage and every other tool
  * page — same pattern as QrCodeGeneratorLazy.
  */
-const PdfOrganizer = dynamic(() =>
-  import("./PdfOrganizer").then((mod) => mod.PdfOrganizer),
+const PdfOrganizer = dynamic(
+  () => import("./PdfOrganizer").then((mod) => mod.PdfOrganizer),
+  { loading: () => <ToolSkeleton /> },
 );
 
 export function PdfOrganizerLazy() {
